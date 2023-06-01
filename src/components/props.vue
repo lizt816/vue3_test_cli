@@ -1,12 +1,24 @@
 <template>
-  <router-view />
+  <div>
+     {{a}}
+     <span @click="ccc">点击触发子传父</span>
+  </div>
 </template>
 
 <script>
 
 export default {
-  name: 'App',
-  components: {},
+    props:['a'],
+    components: {},
+    setup(props,b){
+      console.log(props,b,"000")
+      function ccc(){
+        b.emit('b',{name:'111'})
+      }
+      return{
+        ccc
+      }
+    }
 }
 </script>
 
